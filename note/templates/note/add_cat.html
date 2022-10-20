@@ -1,0 +1,18 @@
+
+<style>
+.btn{
+    margin-top: 5%;
+    margin-left: 10%;
+}
+</style>
+
+<div>
+    <form class="btn" method="POST" action="">
+        {% csrf_token %}
+        {{addcat.as_p}}
+        <input type="submit" value="ADD" />
+    </form>
+    <div class="btn">
+        <a href="{% url 'home' %}">GO BACK</a>
+    </div>
+</div>

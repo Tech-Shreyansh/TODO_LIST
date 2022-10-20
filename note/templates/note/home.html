@@ -10,8 +10,10 @@
         background-image: linear-gradient(rgb(232, 232, 146),rgb(238, 238, 209));
     }
 
-    #category{
+    .cat{
         margin-left: 7%;
+    }
+    #category{
         font-size: 200%;
     }
     .time{
@@ -21,7 +23,7 @@
 
 <div>
     <h2>Welcome to my Notes App</h2>
-    <div id="category">
+    <div id="category" class="cat">
         <h5>The Categories available now are :-</h5>
         <ul>
             {% for categ in cat %}
@@ -30,5 +32,8 @@
             </div>
             {% endfor %}
         </ul>
+    </div>
+    <div class="cat">
+        <a href="{% url 'add' %}">ADD NEW CATEGORY</a> || <a href="{% url 'notes' %}">GO TO NOTES</a>
     </div>
 </div>

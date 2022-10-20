@@ -1,0 +1,32 @@
+<style>
+    .time{
+        font-size: 60%;
+    }
+
+    .items{
+        margin:1%;
+    }
+
+    H1{
+        margin-left: 27%;
+        margin-top: 3%;
+        background-image: linear-gradient(rgb(17, 97, 17),rgb(68, 228, 47));
+        width: max-content;
+        color: brown;
+    }
+</style>
+<H1>
+    THESE ARE THE EXISTING NOTES
+</H1>
+<div>
+    {% for des in desc %}
+    <ul>
+    <li class="items">CATEGORY: {{des.topic.category.category}}</li>
+    <li class="items">Topic: {{des.topic.topic}} </li>
+    <li class="items"> Description:- {{des.description}} </li>
+    <li class="items" class="time">Created on:- {{des.time}}</li>
+    <li class="items" class="time">Last Updated on:- {{des.time_updated}}</li>
+    </ul>
+    <hr>
+    {% endfor %}
+</div>
