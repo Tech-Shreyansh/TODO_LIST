@@ -23,6 +23,7 @@ class trial(models.Model):
         return self.name
 
 class trial_skill(models.Model):
+
     name = models.ForeignKey(trial, on_delete=models.CASCADE)
     skill = models.CharField(max_length=50)
     time = models.DateTimeField(auto_now_add=True)

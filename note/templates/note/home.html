@@ -1,0 +1,34 @@
+<style>
+    *{
+        background-color: rgb(213, 213, 213);
+    }
+    h2{
+        margin-top: 5%;
+        margin-left: 37%;
+        width:max-content;
+        color: rgb(0, 0, 0);
+        background-image: linear-gradient(rgb(232, 232, 146),rgb(238, 238, 209));
+    }
+
+    #category{
+        margin-left: 7%;
+        font-size: 200%;
+    }
+    .time{
+        font-size: 40%;
+    }
+</style>
+
+<div>
+    <h2>Welcome to my Notes App</h2>
+    <div id="category">
+        <h5>The Categories available now are :-</h5>
+        <ul>
+            {% for categ in cat %}
+            <div>
+            <li>{{categ.category}}<br> <div class="time">Created on:- {{categ.time_created}}</div><div class="time">Last Updated on:- {{categ.time_updated}}</div> <hr></li>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
