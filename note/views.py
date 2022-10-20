@@ -20,8 +20,6 @@ def add_cat(request):
     return render(request, "note/add_cat.html", context)
 
 def notes(request):
-    categ= category.objects.all()
-    top= topic.objects.all()
     des= description.objects.all()
     context = {'desc' :des}
     return render(request, "note/notes.html", context)
@@ -32,8 +30,20 @@ def noteadd(request):
         form = noteform(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('notes')
     context = {'noteadd' : form}
+    return render(request, "note/note_add.html", context)
+
+
+def noteupdate(request, i):
+    note = description.objects.get(id=i)
+    form=noteform(instance=note)
+    if request.method == 'POST':
+        form = noteform(request.POST, instance=note)
+        if form.is_valid():
+            form.save()
+            return redirect('notes')
+    context ={'noteupdate' : form}
     return render(request, "note/note_add.html", context)
 
 def topicadd(request):
@@ -45,4 +55,3 @@ def topicadd(request):
             return redirect('noteadd')
     context = {'topicadd' : form}
     return render(request, "note/add_topic.html", context)
-    

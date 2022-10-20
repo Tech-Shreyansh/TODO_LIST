@@ -6,5 +6,6 @@ urlpatterns = [
     path("add/",views.add_cat, name="add"),
     path("notes/", views.notes, name="notes"),
     path("noteadd/", views.noteadd, name="noteadd"),
+    path("noteupdate/<str:i>/", views.noteupdate, name="noteupdate"),
     path("topicadd/", views.topicadd, name="topicadd"),
 ]

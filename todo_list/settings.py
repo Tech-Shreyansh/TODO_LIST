@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "note.apps.NoteConfig",
-    "notes.apps.NotesConfig",
 ]
 
 MIDDLEWARE = [
@@ -109,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "asia/calcutta"
 
 USE_I18N = True
 

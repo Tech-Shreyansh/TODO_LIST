@@ -28,6 +28,7 @@
     <li class="items" class="time">Created on:- {{des.time}}</li>
     <li class="items" class="time">Last Updated on:- {{des.time_updated}}</li>
     </ul>
+    <a href="{% url 'noteupdate' des.id %}">EDIT</a>
     <hr>
     {% endfor %}
 </div>
