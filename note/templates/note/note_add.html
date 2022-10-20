@@ -1,0 +1,28 @@
+
+<style>
+    .btn{
+        margin-top: 5%;
+        margin-left: 10%;
+    }
+    H1{
+        margin-left: 27%;
+        margin-top: 3%;
+        background-image: linear-gradient(rgb(17, 97, 17),rgb(68, 228, 47));
+        width: max-content;
+        color: brown;
+    }
+</style>
+<H1>
+    ADD YOUR NEW NOTE!!
+</H1>
+    
+    <div>
+        <form class="btn" method="POST" action="">
+            {% csrf_token %}
+            {{noteadd.as_p}}
+            <input type="submit" value="Submit" />
+        </form>
+        <div class="btn">
+            <a href="{% url 'topicadd' %}">ADD NEW TOPIC</a> || <a href="{% url 'notes' %}">GO BACK</a>
+        </div>
+    </div>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import category,topic,description
-from .forms import catform 
+from .forms import catform, noteform, topicform
 
 # Create your views here.
 
@@ -25,4 +25,24 @@ def notes(request):
     des= description.objects.all()
     context = {'desc' :des}
     return render(request, "note/notes.html", context)
+
+def noteadd(request):
+    form = noteform()
+    if request.method == 'POST':
+        form = noteform(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context = {'noteadd' : form}
+    return render(request, "note/note_add.html", context)
+
+def topicadd(request):
+    form = topicform()
+    if request.method == 'POST':
+        form = topicform(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('noteadd')
+    context = {'topicadd' : form}
+    return render(request, "note/add_topic.html", context)
     
