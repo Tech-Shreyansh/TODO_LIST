@@ -18,6 +18,14 @@
 <H1>
     THESE ARE THE EXISTING NOTES
 </H1>
+
+<H3>
+    BROWSE THE EXISTING NOTES
+</H3>
+
+<form method="get" action="{% url 'notes' %}">
+    <input width="100px" type="text" name="s" placeholder="search by topic name..!!" />
+</form>
 <a href="{% url 'noteadd' %}">CREATE NEW NOTE</a>
 <div>
     {% for des in desc %}

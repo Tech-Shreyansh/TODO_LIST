@@ -27,8 +27,10 @@ def catdelete(request, i):
     return render(request, "note/del_cat.html")
 
 def notes(request):
-    des= description.objects.all()
-    context = {'desc' :des}
+    s= request.GET.get('s') if request.GET.get('s') != None else ''
+    des= description.objects.filter(topic__topic__icontains=s)
+    note_count = des.count()
+    context = {'desc' :des,}
     return render(request, "note/notes.html", context)
 
 def noteadd(request):
