@@ -16,34 +16,30 @@
     }
 </style>
 <H1>
-    THESE ARE THE EXISTING NOTES
+    THESE ARE THE EXISTING BOOKMARKS
 </H1>
 
 <H3>
-    BROWSE THE EXISTING NOTES
+    BROWSE THE EXISTING BOOKMARKS
 </H3>
 
 <form method="get" action="{% url 'notes' %}">
     <input width="100px" type="text" name="s" placeholder="search by topic name..!!" />
 </form>
-<a href="{% url 'noteadd' %}">CREATE NEW NOTE</a> || <a href="{% url 'bookmark' %}">CLICK TO VIEW BOOKMARKS</a>
 <div>
     {% for des in desc %}
+
+    {% if des.bookmark == 1 %}
     <ul>
     <li class="items">CATEGORY: {{des.topic.category.category}}</li>
     <li class="items">Topic: {{des.topic.topic}} </li>
     <li class="items"> Description:- {{des.description}} </li>
-    <li class="items"> IMAGE:- {{des.image}} </li>
     <li class="items" class="time">Created on:- {{des.time}}</li>
     <li class="items" class="time">Last Updated on:- {{des.time_updated}}</li>
     </ul>
     <a href="{% url 'noteupdate' des.id %}">EDIT</a> || <a href="{% url 'notedelete' des.id %}">DELETE</a>
-    <form class="btn" method="POST" action="">
-        {% csrf_token %}
-        {{addbookmark}}
-        <input type="submit" value="add bookmark" />
-    </form>
     <hr>
+    {% endif %}
     {% endfor %}
 </div>
-<a href="{% url 'home' %}">GO BACK</a>
+<a href="{% url 'notes' %}">GO BACK</a>

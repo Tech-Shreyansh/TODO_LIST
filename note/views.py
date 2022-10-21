@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import category,topic,description
-from .forms import catform, noteform, topicform
+from .forms import catform, noteform, topicform, bookmarkform
 
 # Create your views here.
 
@@ -29,7 +29,6 @@ def catdelete(request, i):
 def notes(request):
     s= request.GET.get('s') if request.GET.get('s') != None else ''
     des= description.objects.filter(topic__topic__icontains=s)
-    note_count = des.count()
     context = {'desc' :des,}
     return render(request, "note/notes.html", context)
 
@@ -71,3 +70,22 @@ def topicadd(request):
             return redirect('noteadd')
     context = {'topicadd' : form}
     return render(request, "note/add_topic.html", context)
+
+def bookmark(request):
+    des= description.objects.all()
+    context = {'desc' :des,}
+    return render(request, "note/bookmark.html", context)
+
+def addbookmark(request, i):
+    form = bookmarkform()
+    if request.method == 'POST':
+        var= description.objects.get(id=i)
+        var.bookmark = 1
+        var.save()
+        form = bookmarkform(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('notes')
+    note = description.objects.all()
+    context={'bkmdnote',note}
+    return render(request, "note/notes.html", context)
