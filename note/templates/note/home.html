@@ -19,6 +19,10 @@
     .time{
         font-size: 40%;
     }
+
+    #del{
+        font-size: 40%;
+    }
 </style>
 
 <div>
@@ -28,7 +32,7 @@
         <ul>
             {% for categ in cat %}
             <div>
-            <li>{{categ.category}}<br> <div class="time">Created on:- {{categ.time_created}}</div><div class="time">Last Updated on:- {{categ.time_updated}}</div> <hr></li>
+            <li>{{categ.category}}<br> <div class="time">Created on:- {{categ.time_created}}</div><div class="time">Last Updated on:- {{categ.time_updated}}</div> <a id="del" href="{% url 'catdelete' categ.id %}">DELETE</a><hr></li>
             </div>
             {% endfor %}
         </ul>

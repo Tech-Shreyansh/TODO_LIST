@@ -1,0 +1,6 @@
+<form class="btn" method="POST" action="">
+    {% csrf_token %}
+    <p>ARE YOU SURE YOU WANT TO DELETE THIS ?? </p>
+    <a href="{% url 'home' %}">GO BACK</a>
+    <input type="submit" value="Confirm" />
+</form>

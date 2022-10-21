@@ -19,6 +19,13 @@ def add_cat(request):
     context = {'addcat' : form}
     return render(request, "note/add_cat.html", context)
 
+def catdelete(request, i):
+    cat = category.objects.get(id=i)
+    if request.method == 'POST':
+        cat.delete()
+        return redirect('home')
+    return render(request, "note/del_cat.html")
+
 def notes(request):
     des= description.objects.all()
     context = {'desc' :des}
@@ -45,6 +52,13 @@ def noteupdate(request, i):
             return redirect('notes')
     context ={'noteupdate' : form}
     return render(request, "note/note_add.html", context)
+
+def notedelete(request, i):
+    note = description.objects.get(id=i)
+    if request.method == 'POST':
+        note.delete()
+        return redirect('notes')
+    return render(request, "note/delete.html")
 
 def topicadd(request):
     form = topicform()
