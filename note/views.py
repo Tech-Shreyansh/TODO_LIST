@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import category,topic,description
-from .forms import catform, noteform, topicform, bookmarkform
+from .forms import catform, noteform, topicform
+
 
 # Create your views here.
 
@@ -73,19 +74,13 @@ def topicadd(request):
 
 def bookmark(request):
     des= description.objects.all()
-    context = {'desc' :des,}
+    context = {'desc' :des}
     return render(request, "note/bookmark.html", context)
 
 def addbookmark(request, i):
-    form = bookmarkform()
-    if request.method == 'POST':
-        var= description.objects.get(id=i)
-        var.bookmark = 1
-        var.save()
-        form = bookmarkform(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('notes')
+    note = description.objects.get(id = i)
+    note.bookmark=1
+    note.save()
     note = description.objects.all()
-    context={'bkmdnote',note}
-    return render(request, "note/notes.html", context)
+    return redirect('notes')
+

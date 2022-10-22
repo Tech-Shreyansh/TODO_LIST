@@ -20,8 +20,3 @@ class topicform(ModelForm):
     class Meta:
         model = topic
         fields = '__all__'
-
-class bookmarkform(ModelForm):
-    class Meta:
-        model = description
-        fields = '__all__'

@@ -28,8 +28,8 @@ class description(models.Model):
     description = models.TextField(max_length=2000)
     time = models.DateTimeField(auto_now_add=True)
     time_updated = models.DateTimeField(auto_now=True)
-    bookmark = models.CharField(max_length=1, null=True)
-    image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
+    bookmark = models.IntegerField(default=0)
+    image = models.ImageField(upload_to="note/img", height_field=None, width_field=None, max_length=100, default="")
 
     def __str__(self):
         return self.description[0:100]

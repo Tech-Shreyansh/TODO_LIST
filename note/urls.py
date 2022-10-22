@@ -11,4 +11,5 @@ urlpatterns = [
     path("notedelete/<str:i>/", views.notedelete, name="notedelete"),
     path("topicadd/", views.topicadd, name="topicadd"),
     path("bookmarks/", views.bookmark, name="bookmark"),
+    path("addbookmarks/<str:i>/", views.addbookmark, name="addbookmark"),
 ]
