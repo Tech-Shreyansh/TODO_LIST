@@ -37,7 +37,7 @@
     <li class="items" class="time">Created on:- {{des.time}}</li>
     <li class="items" class="time">Last Updated on:- {{des.time_updated}}</li>
     </ul>
-    <a href="{% url 'noteupdate' des.id %}">EDIT</a> || <a href="{% url 'notedelete' des.id %}">DELETE</a>
+    <a href="{% url 'noteupdate' des.id %}">EDIT</a> || <a href="{% url 'notedelete' des.id %}">DELETE</a>|| <a href="{% url 'removebookmark' des.id %}">REMOVE BOOKMARK</a>
     <hr>
     {% endif %}
     {% endfor %}

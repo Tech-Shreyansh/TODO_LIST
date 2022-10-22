@@ -1,11 +1,21 @@
-from rest_framework import serializers
-from .models import description
+from dataclasses import field
+from rest_framework.serializers import ModelSerializer
+from note.models import *
 
-class descriptionS(serializers.Serializer):
-    topic = serializers.CharField(max_length=2000)
-    description = serializers.CharField(max_length=2000)
-    time = serializers.DateTimeField()
-    time_updated = serializers.DateTimeField()
+class NotesSerializer(ModelSerializer):
+    class Meta:
+        model = description
+        fields = '__all__'
+
+class TopicSerializer(ModelSerializer):
+    class Meta:
+        model = topic
+        fields = '__all__'
+
+class CategorySerializer(ModelSerializer):
+    class Meta:
+        model = category
+        fields = '__all__'
 
     # def create(self, validate_data):
     #     return description.objects.create(**validate_data)

@@ -14,6 +14,13 @@
         width: max-content;
         color: brown;
     }
+    a{
+        background-image: linear-gradient(rgb(128, 41, 0),rgb(233, 191, 136));
+        border-radius: 10%;
+        text-decoration: none;
+        color: black;
+        padding: 0.5%;
+    }
 </style>
 <H1>
     THESE ARE THE EXISTING NOTES
@@ -26,10 +33,13 @@
 <form method="get" action="{% url 'notes' %}">
     <input width="100px" type="text" name="s" placeholder="search by topic name..!!" />
 </form>
-<a href="{% url 'noteadd' %}">CREATE NEW NOTE</a> || <a href="{% url 'bookmark' %}">CLICK TO VIEW BOOKMARKS</a>
+<b><a href="{% url 'noteadd' %}">CREATE NEW NOTE</a> || <a href="{% url 'bookmark' %}">CLICK TO VIEW BOOKMARKS</a></b>
 <div>
     {% for des in desc %}
     <ul>
+        {% if des.bookmark == 1 %}
+        <h6>bookmarked</h6>
+        {% endif %}
     <li class="items">CATEGORY: {{des.topic.category.category}}</li>
     <li class="items">Topic: {{des.topic.topic}} </li>
     <li class="items"> Description:- {{des.description}} </li>
@@ -37,7 +47,9 @@
     <li class="items" class="time">Created on:- {{des.time}}</li>
     <li class="items" class="time">Last Updated on:- {{des.time_updated}}</li>
     </ul>
-    <a href="{% url 'noteview' des.id %}">VIEW</a> ||<a href="{% url 'noteupdate' des.id %}">EDIT</a> || <a href="{% url 'notedelete' des.id %}">DELETE</a> || <a href="{% url 'addbookmark' des.id %}">ADD BOOKMARK</a>
+<b><a href="{% url 'noteview' des.id %}">VIEW</a>  <a href="{% url 'noteupdate' des.id %}">EDIT</a>    <a href="{% url 'notedelete' des.id %}">DELETE</a>  {% if des.bookmark == 0 %}
+    <a href="{% url 'addbookmark' des.id %}">ADD BOOKMARK</a> {% else %} <a href="{% url 'removebookmark' des.id %}">REMOVE BOOKMARK</a>
+    {% endif %} </b>
     <hr>
     {% endfor %}
 </div>

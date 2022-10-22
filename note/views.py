@@ -84,3 +84,9 @@ def addbookmark(request, i):
     note = description.objects.all()
     return redirect('notes')
 
+def removebookmark(request, i):
+    note = description.objects.get(id = i)
+    note.bookmark=0
+    note.save()
+    note = description.objects.all()
+    return redirect('notes')
