@@ -1,1 +1,1 @@
-web gunicorn todo_list.wsgi:application --log-file -
+web: waitress-serve --port=$PORT todo_list.wsgi:application
